@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background: url(./img/bg1.jpg) no-repeat top center fixed;
+        background-size: 100% auto;
+      }
+      .content {
+        position: relative;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+      }
+      img {
+        backface-visibility: hidden;
+        perspective: 1000;
+        -webkit-perspective: 1000;
+        z-index: 1;
+        width: 20%;
+        height: auto;
+        position: absolute;
+        padding: 10px 10px 15px 10px;
+        background: #ffffff;
+        border: 1px solid #cccccc;
+        transition: 0.5s;
+      }
+      img:hover {
+        z-index: 2;
+        transform: scale(1.5) !important;
+        box-shadow: -10px 10px 20px #000000;
+      }
+    </style>
+    <script>
+      function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function getLeftRandom() {
+        return getRandomIntInclusive(200, 700);
+      }
+      function getHeightRandom() {
+        return getRandomIntInclusive(250, 750);
+      }
+      function getRotateRandom() {
+        return getRandomIntInclusive(-180, 180);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="content"></div>
+    <script>
+      var str = '';
+      for (var i = 1; i < 11; i++) {
+        str += `<img src="img/${i}.jpg" style="left:${getLeftRandom()}px;top:${getHeightRandom()}px;transform:rotate(${getRotateRandom()}deg);" />`;
+      }
+      document.querySelector('.content').innerHTML = str;
+    </script>
+  </body>
+</html>
